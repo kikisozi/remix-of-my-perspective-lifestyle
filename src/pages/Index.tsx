@@ -3,12 +3,9 @@ import ArticleCard from "@/components/ArticleCard";
 import HeroSection from "@/components/HeroSection";
 import IntroSection from "@/components/IntroSection";
 import { articles } from "@/data/articles";
-
 const Index = () => {
   const featuredArticles = articles.slice(0, 6);
-
-  return (
-    <div className="min-h-screen bg-background animate-fade-in">
+  return <div className="min-h-screen bg-background animate-fade-in">
       <Header />
       
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -25,11 +22,9 @@ const Index = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {featuredArticles.map((article, index) => (
-              <div key={article.id} className={`animate-slide-up stagger-${Math.min(index + 1, 6)}`}>
+            {featuredArticles.map((article, index) => <div key={article.id} className={`animate-slide-up stagger-${Math.min(index + 1, 6)}`}>
                 <ArticleCard {...article} size="small" />
-              </div>
-            ))}
+              </div>)}
           </div>
         </section>
       </main>
@@ -42,7 +37,7 @@ const Index = () => {
               <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
                 <span className="text-primary-foreground font-bold">王</span>
               </div>
-              <span className="text-lg font-bold font-serif">烨桐的博客</span>
+              <span className="text-lg font-bold font-serif">烨桐大王</span>
             </div>
             <nav className="flex items-center gap-6 text-sm text-muted-foreground">
               <a href="/" className="hover:text-accent transition-colors">首页</a>
@@ -55,8 +50,6 @@ const Index = () => {
           </div>
         </div>
       </footer>
-    </div>
-  );
+    </div>;
 };
-
 export default Index;
