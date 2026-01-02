@@ -37,7 +37,7 @@ const Index = () => {
               <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
                 <span className="text-primary-foreground font-bold">王</span>
               </div>
-              <span className="text-lg font-bold font-serif">烨桐大王</span>
+              <span className="text-lg font-bold font-serif">大王の信</span>
             </div>
             <nav className="flex items-center gap-6 text-sm text-muted-foreground">
               <a href="/" className="hover:text-accent transition-colors">首页</a>
@@ -46,7 +46,7 @@ const Index = () => {
             </nav>
           </div>
           <div className="pt-8 mt-8 border-t border-border text-center text-sm text-muted-foreground">
-            <p>© 2026 王烨桐的博客. 保留所有权利.</p>
+            <p>© 2026 大王の信. 保留所有权利.</p>
           </div>
         </div>
       </footer>
