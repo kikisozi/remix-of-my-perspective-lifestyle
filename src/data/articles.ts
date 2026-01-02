@@ -39,7 +39,7 @@ export const articles: Article[] = [
       bio: "闪电宝宝，Hello World 探索者",
     },
     content: {
-      introduction: "Hello World! 这是我的第一篇文章，欢迎来到我的世界。每一个伟大的旅程都从一个简单的开始，而这就是我的起点。",
+      introduction: "我是闪电",
       sections: [
         {
           heading: "Hello World 的起源",
