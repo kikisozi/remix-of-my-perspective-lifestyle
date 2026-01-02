@@ -120,7 +120,11 @@ const Article = () => {
           {/* Tags */}
           <div className="mb-12 pb-12 border-b border-border">
             <div className="flex flex-wrap gap-3">
-              {article.tags.map(tag => {})}
+              {article.tags.map(tag => (
+                <span key={tag} className="px-3 py-1 rounded-full text-sm bg-muted text-muted-foreground">
+                  {tag}
+                </span>
+              ))}
             </div>
           </div>
 
