@@ -38,28 +38,22 @@ const Header = () => {
           <div className="flex items-center min-w-0">
             <a href="/" className="flex items-center gap-1.5 sm:gap-2">
               <div className="w-7 h-7 sm:w-8 sm:h-8 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
-                <span className="text-primary-foreground font-bold text-base sm:text-lg">P</span>
+                <span className="text-primary-foreground font-bold text-base sm:text-lg">王</span>
               </div>
-              <span className="text-base sm:text-xl font-bold font-serif truncate">Perspective</span>
+              <span className="text-base sm:text-xl font-bold font-serif truncate">烨桐的博客</span>
             </a>
           </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-2">
             <a href="/" className="text-sm font-medium hover:bg-muted/60 rounded-full px-4 py-2 transition-all">
-              Home
+              首页
             </a>
             <a href="/#articles" className="text-sm font-medium hover:bg-muted/60 rounded-full px-4 py-2 transition-all">
-              Articles
-            </a>
-            <a href="/wellness" className="text-sm font-medium hover:bg-muted/60 rounded-full px-4 py-2 transition-all">
-              Wellness
-            </a>
-            <a href="/travel" className="text-sm font-medium hover:bg-muted/60 rounded-full px-4 py-2 transition-all">
-              Travel
+              文章
             </a>
             <a href="/about" className="text-sm font-medium hover:bg-muted/60 rounded-full px-4 py-2 transition-all">
-              About
+              关于我
             </a>
           </nav>
 
@@ -68,7 +62,7 @@ const Header = () => {
             <button
               onClick={toggleTheme}
               className="p-1.5 sm:p-2 rounded-full hover:bg-muted/60 transition-all"
-              aria-label="Toggle theme"
+              aria-label="切换主题"
             >
               {isDark ? (
                 <Sun className="h-4 w-4 sm:h-5 sm:w-5" />
@@ -76,16 +70,12 @@ const Header = () => {
                 <Moon className="h-4 w-4 sm:h-5 sm:w-5" />
               )}
             </button>
-            
-            <Button className="hidden md:flex bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-8 py-2 hover:scale-105 transition-all">
-              Join Now
-            </Button>
 
             {/* Mobile Menu Button */}
             <button
               className="md:hidden p-1.5 sm:p-2"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-label="Toggle menu"
+              aria-label="切换菜单"
             >
               {isMenuOpen ? <X className="h-5 w-5 sm:h-6 sm:w-6" /> : <Menu className="h-5 w-5 sm:h-6 sm:w-6" />}
             </button>
@@ -97,23 +87,14 @@ const Header = () => {
           <div className="md:hidden py-4 border-t border-border animate-fade-in">
             <nav className="flex flex-col gap-4">
               <a href="/" className="text-sm font-medium hover:text-accent transition-colors">
-                Home
+                首页
               </a>
               <a href="/#articles" className="text-sm font-medium hover:text-accent transition-colors">
-                Articles
-              </a>
-              <a href="/wellness" className="text-sm font-medium hover:text-accent transition-colors">
-                Wellness
-              </a>
-              <a href="/travel" className="text-sm font-medium hover:text-accent transition-colors">
-                Travel
+                文章
               </a>
               <a href="/about" className="text-sm font-medium hover:text-accent transition-colors">
-                About
+                关于我
               </a>
-              <Button className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full w-full">
-                Join Now
-              </Button>
             </nav>
           </div>
         )}
