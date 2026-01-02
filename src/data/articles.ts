@@ -46,7 +46,7 @@ export const articles: Article[] = [
           content: "",
         },
       ],
-      conclusion: "",
+      conclusion: "我是闪电",
     },
     tags: ["Hello World", "新开始", "编程", "人生"],
   },
