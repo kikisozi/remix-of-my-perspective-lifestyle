@@ -2,9 +2,12 @@ import { useState } from "react";
 import { MessageCircle, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import coverPhoto from "@/assets/cover-photo.jpg";
+import wechatQr from "@/assets/wechat-qr.jpg";
+
 const HeroSection = () => {
   const [showWechat, setShowWechat] = useState(false);
-  return <section className="relative rounded-[2.5rem] overflow-hidden bg-muted my-12 animate-fade-in">
+  return (
+    <section className="relative rounded-[2.5rem] overflow-hidden bg-muted my-12 animate-fade-in">
       <div className="grid md:grid-cols-2 gap-6 md:gap-12 p-6 md:p-12 lg:p-16">
         {/* Left side - Image */}
         <div className="relative aspect-[4/3] md:aspect-auto rounded-[2rem] overflow-hidden animate-scale-in">
@@ -17,7 +20,7 @@ const HeroSection = () => {
             <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold leading-[1.1] tracking-tight animate-slide-down">
               王烨桐大王
             </h1>
-            <p className="text-muted-foreground text-lg md:text-xl leading-relaxed max-w-xl animate-slide-up stagger-1 bg-primary-foreground">
+            <p className="text-muted-foreground text-lg md:text-xl leading-relaxed max-w-xl animate-slide-up stagger-1">
               这里是aka大王。
             </p>
           </div>
@@ -32,7 +35,8 @@ const HeroSection = () => {
       </div>
 
       {/* WeChat QR Code Modal */}
-      {showWechat && <div className="fixed inset-0 bg-background/80 backdrop-blur-sm z-50 flex items-center justify-center p-4" onClick={() => setShowWechat(false)}>
+      {showWechat && (
+        <div className="fixed inset-0 bg-background/80 backdrop-blur-sm z-50 flex items-center justify-center p-4" onClick={() => setShowWechat(false)}>
           <div className="bg-card rounded-2xl p-6 max-w-sm w-full shadow-xl animate-scale-in" onClick={e => e.stopPropagation()}>
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-lg font-semibold">扫码添加微信</h3>
@@ -40,14 +44,17 @@ const HeroSection = () => {
                 <X className="w-5 h-5" />
               </button>
             </div>
-            <div className="aspect-square bg-muted rounded-xl flex items-center justify-center">
-              <img src={coverPhoto} alt="微信二维码" className="w-full h-full object-cover rounded-xl" />
+            <div className="bg-card rounded-xl">
+              <img src={wechatQr} alt="微信二维码" className="w-full h-auto rounded-xl" />
             </div>
             <p className="text-center text-muted-foreground text-sm mt-4">
               微信扫一扫，添加好友
             </p>
           </div>
-        </div>}
-    </section>;
+        </div>
+      )}
+    </section>
+  );
 };
+
 export default HeroSection;
