@@ -40,12 +40,7 @@ export const articles: Article[] = [
     },
     content: {
       introduction: "",
-      sections: [
-        {
-          heading: "我是闪电",
-          content: "",
-        },
-      ],
+      sections: [],
       conclusion: "我是闪电",
     },
     tags: ["Hello World", "新开始", "编程", "人生"],
