@@ -1,10 +1,11 @@
 import { useParams, Navigate } from "react-router-dom";
+import { useState } from "react";
 import Header from "@/components/Header";
 import ArticleCard from "@/components/ArticleCard";
 import { getArticleById, getRelatedArticles } from "@/data/articles";
-import { Facebook, Twitter, Linkedin, Link2, ArrowLeft } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { toast } from "sonner";
+import { ArrowLeft, MessageCircle } from "lucide-react";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import wechatQR from "@/assets/wechat-qr.jpg";
 const Article = () => {
   const {
     id
@@ -16,10 +17,6 @@ const Article = () => {
     return <Navigate to="/404" replace />;
   }
   const relatedArticles = getRelatedArticles(article.id);
-  const handleCopyLink = () => {
-    navigator.clipboard.writeText(window.location.href);
-    toast.success("Link copied to clipboard!");
-  };
   const getCategoryClass = (cat: string) => {
     const normalized = cat.toLowerCase();
     if (normalized.includes("financ")) return "tag-financing";
@@ -79,21 +76,20 @@ const Article = () => {
                 </div>
               </div>
 
-              {/* Share Buttons */}
-              <div className="hidden md:flex items-center gap-2">
-                <button onClick={handleCopyLink} className="w-10 h-10 rounded-full border border-border hover:border-primary hover:bg-muted transition-all flex items-center justify-center" aria-label="Copy link">
-                  <Link2 className="w-4 h-4" />
-                </button>
-                <a href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(article.title)}&url=${encodeURIComponent(window.location.href)}`} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-border hover:border-primary hover:bg-muted transition-all flex items-center justify-center" aria-label="Share on Twitter">
-                  <Twitter className="w-4 h-4" />
-                </a>
-                <a href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-border hover:border-primary hover:bg-muted transition-all flex items-center justify-center" aria-label="Share on Facebook">
-                  <Facebook className="w-4 h-4" />
-                </a>
-                <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}`} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-border hover:border-primary hover:bg-muted transition-all flex items-center justify-center" aria-label="Share on LinkedIn">
-                  <Linkedin className="w-4 h-4" />
-                </a>
-              </div>
+              {/* WeChat Button */}
+              <Dialog>
+                <DialogTrigger asChild>
+                  <button className="w-10 h-10 rounded-full border border-border hover:border-primary hover:bg-muted transition-all flex items-center justify-center" aria-label="WeChat">
+                    <MessageCircle className="w-4 h-4" />
+                  </button>
+                </DialogTrigger>
+                <DialogContent className="sm:max-w-md">
+                  <div className="flex flex-col items-center gap-4 py-4">
+                    <p className="text-lg font-semibold">扫码添加微信</p>
+                    <img src={wechatQR} alt="WeChat QR Code" className="w-64 h-64 object-contain" />
+                  </div>
+                </DialogContent>
+              </Dialog>
             </div>
           </div>
 
@@ -118,21 +114,23 @@ const Article = () => {
           </div>
 
 
-          {/* Mobile Share Buttons */}
+          {/* Mobile WeChat Button */}
           <div className="md:hidden mb-12 pb-12 border-b border-border">
-            <p className="text-sm font-semibold mb-4">Share this article</p>
-            <div className="flex items-center gap-3">
-              <button onClick={handleCopyLink} className="flex-1 py-3 rounded-full border border-border hover:border-primary hover:bg-muted transition-all flex items-center justify-center gap-2">
-                <Link2 className="w-4 h-4" />
-                <span className="text-sm">Copy link</span>
-              </button>
-              <a href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(article.title)}&url=${encodeURIComponent(window.location.href)}`} target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full border border-border hover:border-primary hover:bg-muted transition-all flex items-center justify-center" aria-label="Share on Twitter">
-                <Twitter className="w-4 h-4" />
-              </a>
-              <a href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`} target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full border border-border hover:border-primary hover:bg-muted transition-all flex items-center justify-center" aria-label="Share on Facebook">
-                <Facebook className="w-4 h-4" />
-              </a>
-            </div>
+            <p className="text-sm font-semibold mb-4">联系我</p>
+            <Dialog>
+              <DialogTrigger asChild>
+                <button className="py-3 px-6 rounded-full border border-border hover:border-primary hover:bg-muted transition-all flex items-center justify-center gap-2">
+                  <MessageCircle className="w-4 h-4" />
+                  <span className="text-sm">微信</span>
+                </button>
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-md">
+                <div className="flex flex-col items-center gap-4 py-4">
+                  <p className="text-lg font-semibold">扫码添加微信</p>
+                  <img src={wechatQR} alt="WeChat QR Code" className="w-64 h-64 object-contain" />
+                </div>
+              </DialogContent>
+            </Dialog>
           </div>
 
         </article>
